@@ -1,7 +1,6 @@
-﻿using ATZ.MVVM.ViewModels.Utility;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
-namespace ATZ.ObservableObject.Tests
+namespace ATZ.ObservableObjects.Tests
 {
     public class TestObservableObject : ObservableObject
     {

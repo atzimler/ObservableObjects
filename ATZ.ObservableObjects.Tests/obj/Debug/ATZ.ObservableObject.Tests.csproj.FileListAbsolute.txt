@@ -1,0 +1,1 @@
+D:\Users\Hijaszu\Projects\ATZ\ObservableObject\ATZ.ObservableObject.Tests\obj\Debug\ATZ.ObservableObject.Tests.csprojResolveAssemblyReference.cache

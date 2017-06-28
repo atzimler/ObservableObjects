@@ -1,7 +1,7 @@
 ﻿using JetBrains.Annotations;
 using System;
 
-namespace ATZ.MVVM.ViewModels.Utility
+namespace ATZ.ObservableObjects
 {
     /// <summary>
     /// Resource locking object to suspend event signaling.

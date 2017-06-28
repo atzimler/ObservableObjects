@@ -3,14 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATZ.ObservableObject", "ATZ.ObservableObject\ATZ.ObservableObject.csproj", "{7EEE9D96-E851-42D3-AC03-83CF55C19AD2}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6F5B0685-685C-4ACD-9F65-9520DD7CA22B}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE.txt = LICENSE.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATZ.ObservableObject.Tests", "ATZ.ObservableObject.Tests\ATZ.ObservableObject.Tests.csproj", "{2060D25F-A19C-4552-BAC6-93EBB3F6B67D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATZ.ObservableObjects", "ATZ.ObservableObjects\ATZ.ObservableObjects.csproj", "{7EEE9D96-E851-42D3-AC03-83CF55C19AD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATZ.ObservableObjects.Tests", "ATZ.ObservableObjects.Tests\ATZ.ObservableObjects.Tests.csproj", "{2060D25F-A19C-4552-BAC6-93EBB3F6B67D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

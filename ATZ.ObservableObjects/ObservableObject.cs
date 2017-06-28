@@ -1,10 +1,9 @@
-﻿using ATZ.MVVM.ViewModels.Utility;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace ATZ.ObservableObject
+namespace ATZ.ObservableObjects
 {
     /// <summary>
     /// Abstract base class to provide INotifyPropertyChanged implementation.

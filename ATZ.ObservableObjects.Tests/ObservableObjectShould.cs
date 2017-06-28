@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using System.ComponentModel;
 
-namespace ATZ.ObservableObject.Tests
+namespace ATZ.ObservableObjects.Tests
 {
     [TestFixture]
     public class ObservableObjectShould

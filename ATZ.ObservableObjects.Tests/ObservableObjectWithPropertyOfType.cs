@@ -1,4 +1,4 @@
-﻿namespace ATZ.ObservableObject.Tests
+﻿namespace ATZ.ObservableObjects.Tests
 {
     public class ObservableObjectWithPropertyOfType<T> : ObservableObject
     {

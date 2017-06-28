@@ -1,0 +1,9 @@
+D:\Users\Hijaszu\Projects\ATZ\ObservableObjects\ATZ.ObservableObjects.Tests\obj\Debug\ATZ.ObservableObjects.Tests.csprojResolveAssemblyReference.cache
+D:\Users\Hijaszu\Projects\ATZ\ObservableObjects\ATZ.ObservableObjects.Tests\bin\Debug\ATZ.ObservableObjects.Tests.dll
+D:\Users\Hijaszu\Projects\ATZ\ObservableObjects\ATZ.ObservableObjects.Tests\bin\Debug\ATZ.ObservableObjects.Tests.pdb
+D:\Users\Hijaszu\Projects\ATZ\ObservableObjects\ATZ.ObservableObjects.Tests\bin\Debug\ATZ.ObservableObjects.dll
+D:\Users\Hijaszu\Projects\ATZ\ObservableObjects\ATZ.ObservableObjects.Tests\bin\Debug\nunit.framework.dll
+D:\Users\Hijaszu\Projects\ATZ\ObservableObjects\ATZ.ObservableObjects.Tests\bin\Debug\ATZ.ObservableObjects.pdb
+D:\Users\Hijaszu\Projects\ATZ\ObservableObjects\ATZ.ObservableObjects.Tests\bin\Debug\nunit.framework.xml
+D:\Users\Hijaszu\Projects\ATZ\ObservableObjects\ATZ.ObservableObjects.Tests\obj\Debug\ATZ.ObservableObjects.Tests.dll
+D:\Users\Hijaszu\Projects\ATZ\ObservableObjects\ATZ.ObservableObjects.Tests\obj\Debug\ATZ.ObservableObjects.Tests.pdb
