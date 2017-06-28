@@ -1,7 +1,0 @@
-D:\Users\Hijaszu\Projects\ATZ\ObservableObject\ATZ.ObservableObject\obj\Debug\ATZ.ObservableObject.csprojResolveAssemblyReference.cache
-D:\Users\Hijaszu\Projects\ATZ\ObservableObject\ATZ.ObservableObject\bin\Debug\ATZ.ObservableObject.dll
-D:\Users\Hijaszu\Projects\ATZ\ObservableObject\ATZ.ObservableObject\bin\Debug\ATZ.ObservableObject.pdb
-D:\Users\Hijaszu\Projects\ATZ\ObservableObject\ATZ.ObservableObject\bin\Debug\JetBrains.Annotations.dll
-D:\Users\Hijaszu\Projects\ATZ\ObservableObject\ATZ.ObservableObject\bin\Debug\JetBrains.Annotations.xml
-D:\Users\Hijaszu\Projects\ATZ\ObservableObject\ATZ.ObservableObject\obj\Debug\ATZ.ObservableObject.dll
-D:\Users\Hijaszu\Projects\ATZ\ObservableObject\ATZ.ObservableObject\obj\Debug\ATZ.ObservableObject.pdb

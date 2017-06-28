@@ -1,6 +1,0 @@
-D:\Users\Hijaszu\Projects\ATZ\ObservableObjects\ATZ.ObservableObjects\bin\Debug\ATZ.ObservableObjects.dll
-D:\Users\Hijaszu\Projects\ATZ\ObservableObjects\ATZ.ObservableObjects\bin\Debug\ATZ.ObservableObjects.pdb
-D:\Users\Hijaszu\Projects\ATZ\ObservableObjects\ATZ.ObservableObjects\bin\Debug\JetBrains.Annotations.dll
-D:\Users\Hijaszu\Projects\ATZ\ObservableObjects\ATZ.ObservableObjects\bin\Debug\JetBrains.Annotations.xml
-D:\Users\Hijaszu\Projects\ATZ\ObservableObjects\ATZ.ObservableObjects\obj\Debug\ATZ.ObservableObjects.dll
-D:\Users\Hijaszu\Projects\ATZ\ObservableObjects\ATZ.ObservableObjects\obj\Debug\ATZ.ObservableObjects.pdb

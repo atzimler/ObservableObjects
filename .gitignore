@@ -1,11 +1,7 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
+.vs/
+*.sln.DotSettings.user
 
-/.vs
-/ATZ.ObservableObject/obj/Debug
-/ATZ.ObservableObject/obj/Debug
-/ATZ.ObservableObject/bin/Debug
-/ATZ.ObservableObject.Tests/obj/Debug
-/packages
-/ObservableObject.sln.DotSettings.user
+*/bin/*
+*/obj/*
+
+packages/
