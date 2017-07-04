@@ -13,10 +13,19 @@ namespace ATZ.ObservableObjects.Tests
             set => Set(ref _a, value, new[] { "B" });
         }
 
+        public int OnPropertyChangedCallCount { get; private set; } = 0;
+
         public int PropertyRaisingChangeNotification
         {
             get => _propertyRaisingChangeNotification;
             set => Set(ref _propertyRaisingChangeNotification, value);
+        }
+
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+
+            OnPropertyChangedCallCount++;
         }
 
         public void NullAdditionalProperties()

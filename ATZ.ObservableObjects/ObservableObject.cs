@@ -23,7 +23,7 @@ namespace ATZ.ObservableObjects
         /// Fire PropertyChanged event if there is an attached one.
         /// </summary>
         /// <param name="propertyName">The name of the property that has been changed.</param>
-        protected void OnPropertyChanged(string propertyName)
+        protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

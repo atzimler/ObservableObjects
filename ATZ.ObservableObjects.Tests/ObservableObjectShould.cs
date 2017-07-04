@@ -123,5 +123,16 @@ namespace ATZ.ObservableObjects.Tests
             vm.PropertyRaisingChangeNotification++;
             Assert.AreEqual(1, _callCounter);
         }
+
+        [Test]
+        public void AllowHookingIntoThePropertyChangedProcessing()
+        {
+            var vm = new TestObservableObject();
+
+            Assert.AreEqual(0, vm.OnPropertyChangedCallCount);
+
+            vm.A = 1;
+            Assert.AreEqual(2, vm.OnPropertyChangedCallCount);
+        }
     }
 }

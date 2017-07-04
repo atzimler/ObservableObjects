@@ -15,6 +15,9 @@
     </dependencies>
 
     <releaseNotes>
+1.1.0:
+- Fixing that protected OnPropertyChanged was not virtual and because of this did not allow to hook into the infrastructure.
+      
 1.0.0:
 - Initial NuGet Packaging. Package extracted from ATZ.MVVM library to allow independent reuse.
     </releaseNotes>
