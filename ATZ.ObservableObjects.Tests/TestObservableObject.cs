@@ -13,7 +13,7 @@ namespace ATZ.ObservableObjects.Tests
             set => Set(ref _a, value, new[] { "B" });
         }
 
-        public int OnPropertyChangedCallCount { get; private set; } = 0;
+        public int OnPropertyChangedCallCount { get; private set; }
 
         public int PropertyRaisingChangeNotification
         {

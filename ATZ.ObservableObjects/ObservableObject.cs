@@ -2,12 +2,14 @@
 using System.ComponentModel;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
 
 namespace ATZ.ObservableObjects
 {
     /// <summary>
     /// Abstract base class to provide INotifyPropertyChanged implementation.
     /// </summary>
+    [DataContract]
     public abstract class ObservableObject : INotifyPropertyChanged
     {
         /// <see cref="INotifyPropertyChanged.PropertyChanged"/>
