@@ -1,0 +1,11 @@
+﻿2.0.0:
+- Migrating to .NET Stardard 2.0
+
+1.2.0:
+- Adding [DataContract] to the ObservableObject class, so the model structure can be tagged with [DataContract] too. This is only a requirement for the DataContract serializer for defining serialization events.
+      
+1.1.0:
+- Fixing that protected OnPropertyChanged was not virtual and because of this did not allow to hook into the infrastructure.
+      
+1.0.0:
+- Initial NuGet Packaging. Package extracted from ATZ.MVVM library to allow independent reuse.
