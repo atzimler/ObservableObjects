@@ -1,4 +1,7 @@
-﻿2.0.0:
+﻿2.1.0:
+- Adding explicit support for .NET6, .NET7, .NET8
+
+2.0.0:
 - Migrating to .NET Stardard 2.0
 
 1.2.0:

@@ -1,5 +1,4 @@
-﻿using JetBrains.Annotations;
-using System;
+﻿using System;
 
 namespace ATZ.ObservableObjects
 {
@@ -13,14 +12,16 @@ namespace ATZ.ObservableObjects
         /// </summary>
         public delegate void ResumeEvent();
 
-        [NotNull]
+        // TODO: [NotNull]
         private readonly ResumeEvent _resumeEvent;
 
         /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="resumeEvent">The delegate to resume event.</param>
-        internal SuspendPropertyChangedEvent([NotNull] ResumeEvent resumeEvent)
+        internal SuspendPropertyChangedEvent(
+            // TODO: [NotNull] 
+            ResumeEvent resumeEvent)
         {
             _resumeEvent = resumeEvent;
         }

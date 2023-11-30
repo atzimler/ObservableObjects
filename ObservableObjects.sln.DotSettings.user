@@ -2,4 +2,8 @@
 	<s:Boolean x:Key="/Default/CoverageSessionsPersistenceManagerSettings/SessionPersistentData/=3D11D9A9E4814554BE7D747337A58746/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/CoverageSessionsPersistenceManagerSettings/SessionPersistentData/=3D11D9A9E4814554BE7D747337A58746/ProductVersion/@EntryValue">2017.1.3</s:String>
 	<s:String x:Key="/Default/CoverageSessionsPersistenceManagerSettings/SessionPersistentData/=3D11D9A9E4814554BE7D747337A58746/SnapshotLocation/@EntryValue">C:\Users\Hijaszu\AppData\Local\Temp\ssm.Vegilaz.tmp</s:String>
-	<s:Int64 x:Key="/Default/Environment/SearchAndNavigation/DefaultOccurrencesGroupingIndex/@EntryValue">0</s:Int64></wpf:ResourceDictionary>
+	<s:Int64 x:Key="/Default/Environment/SearchAndNavigation/DefaultOccurrencesGroupingIndex/@EntryValue">0</s:Int64>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ef2ca24a_002Daad7_002D432f_002D97e0_002D115fc7574f03/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from &amp;lt;ATZ.ObservableObjects.Tests&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Project Location="/Users/atzimler/Projects/ATZ/ObservableObjects/ATZ.ObservableObjects.Tests" Presentation="&amp;lt;ATZ.ObservableObjects.Tests&amp;gt;" /&gt;
+&lt;/SessionState&gt;</s:String>
+	</wpf:ResourceDictionary>
