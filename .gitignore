@@ -1,3 +1,4 @@
+*.user
 .vs/
 .idea/
 *.sln.DotSettings.user
