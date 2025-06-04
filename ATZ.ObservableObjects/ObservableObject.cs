@@ -13,19 +13,26 @@ namespace ATZ.ObservableObjects
     public abstract class ObservableObject : INotifyPropertyChanged
     {
         /// <see cref="INotifyPropertyChanged.PropertyChanged"/>
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         private static bool SafeEqualityCheck<T>(ref T propertyStorage, T value)
         {
+            if (propertyStorage is null)
+            {
+                return value is null;
+            }
+            
             // ReSharper disable once PossibleNullReferenceException => GetTypeInfo() always returns the TypeInfo representation of the Type.
-            return typeof(T).GetTypeInfo().IsValueType ? propertyStorage.Equals(value) : ReferenceEquals(propertyStorage, value);
+            return typeof(T).GetTypeInfo().IsValueType 
+                ? propertyStorage.Equals(value) 
+                : ReferenceEquals(propertyStorage, value);
         }
 
         /// <summary>
         /// Fire PropertyChanged event if there is an attached one.
         /// </summary>
         /// <param name="propertyName">The name of the property that has been changed.</param>
-        protected virtual void OnPropertyChanged(string propertyName)
+        protected virtual void OnPropertyChanged(string? propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -38,7 +45,7 @@ namespace ATZ.ObservableObjects
         /// <param name="propertyName">Name of the property. Use nameof() to enlist the help of the compiler for making sure that the name stays connected to the property.</param>
         /// <param name="propertyStorage">The backstorage of the property.</param>
         /// <param name="newValue">The new value of the property.</param>
-        protected void Set<T>(string propertyName, ref T propertyStorage, T newValue)
+        protected void Set<T>(string? propertyName, ref T propertyStorage, T newValue)
         {
             if (SafeEqualityCheck(ref propertyStorage, newValue))
             {
@@ -57,7 +64,10 @@ namespace ATZ.ObservableObjects
         /// <param name="newValue">The new value of the property.</param>
         /// <param name="additionalPropertiesChanged">The additional properties that are affected by the change.</param>
         /// <param name="propertyName">The name of the property changed. If omitted then the calling property is the property.</param>
-        protected void Set<T>(ref T propertyStorage, T newValue, IEnumerable<string> additionalPropertiesChanged = null, [CallerMemberName] string propertyName = null)
+        protected void Set<T>(
+            ref T propertyStorage, T newValue, 
+            IEnumerable<string>? additionalPropertiesChanged = null, 
+            [CallerMemberName] string? propertyName = null)
         {
             Set(propertyName, ref propertyStorage, newValue);
             if (additionalPropertiesChanged == null)
