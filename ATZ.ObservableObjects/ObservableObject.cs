@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -21,18 +22,23 @@ namespace ATZ.ObservableObjects
             {
                 return value is null;
             }
-            
-            // ReSharper disable once PossibleNullReferenceException => GetTypeInfo() always returns the TypeInfo representation of the Type.
-            return typeof(T).GetTypeInfo().IsValueType 
-                ? propertyStorage.Equals(value) 
-                : ReferenceEquals(propertyStorage, value);
+
+            var isValueType = typeof(T).GetTypeInfo().IsValueType;
+            // ReSharper disable once ConvertIfStatementToReturnStatement
+            // => Increases complexity above limit
+            if (isValueType)
+            {
+                return propertyStorage.Equals(value);
+            }
+
+            return ReferenceEquals(propertyStorage, value);
         }
 
         /// <summary>
         /// Fire PropertyChanged event if there is an attached one.
         /// </summary>
         /// <param name="propertyName">The name of the property that has been changed.</param>
-        protected virtual void OnPropertyChanged(string? propertyName)
+        protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -45,7 +51,7 @@ namespace ATZ.ObservableObjects
         /// <param name="propertyName">Name of the property. Use nameof() to enlist the help of the compiler for making sure that the name stays connected to the property.</param>
         /// <param name="propertyStorage">The backstorage of the property.</param>
         /// <param name="newValue">The new value of the property.</param>
-        protected void Set<T>(string? propertyName, ref T propertyStorage, T newValue)
+        protected void Set<T>(string propertyName, ref T propertyStorage, T newValue)
         {
             if (SafeEqualityCheck(ref propertyStorage, newValue))
             {
@@ -69,6 +75,11 @@ namespace ATZ.ObservableObjects
             IEnumerable<string>? additionalPropertiesChanged = null, 
             [CallerMemberName] string? propertyName = null)
         {
+            if (propertyName is null)
+            {
+                throw new InvalidOperationException($"Parameter {nameof(propertyName)} is null!");
+            }
+            
             Set(propertyName, ref propertyStorage, newValue);
             if (additionalPropertiesChanged == null)
             {
