@@ -8,7 +8,7 @@ namespace ATZ.ObservableObjects.Tests
     {
         private int _callCounter;
 
-        private void CallCounter(object sender, PropertyChangedEventArgs e)
+        private void CallCounter(object? sender, PropertyChangedEventArgs e)
         {
             _callCounter++;
             Assert.IsNotNull(e);
