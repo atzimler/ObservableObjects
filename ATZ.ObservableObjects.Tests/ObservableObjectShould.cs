@@ -1,138 +1,139 @@
-﻿using NUnit.Framework;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using JetBrains.Annotations;
+using Xunit;
 
-namespace ATZ.ObservableObjects.Tests
+namespace ATZ.ObservableObjects.Tests;
+
+public class ObservableObjectShould
 {
-    [TestFixture]
-    public class ObservableObjectShould
+    private int _callCounter;
+
+    private void CallCounter(object? sender, PropertyChangedEventArgs e)
     {
-        private int _callCounter;
+        _callCounter++;
+        Assert.NotNull(e);
+        Assert.Equal("PropertyRaisingChangeNotification", e.PropertyName);
+    }
 
-        private void CallCounter(object? sender, PropertyChangedEventArgs e)
+    [Fact]
+    public void FireAdditionalPropertyChangedProperly()
+    {
+        var eventAFired = false;
+        var eventBFired = false;
+
+        var vm = new TestObservableObject();
+        vm.PropertyChanged += (_, e) =>
         {
-            _callCounter++;
-            Assert.IsNotNull(e);
-            Assert.AreEqual("PropertyRaisingChangeNotification", e.PropertyName);
-        }
-
-        [SetUp]
-        public void SetUp()
+            Assert.NotNull(e);
+            if (e.PropertyName == "A") eventAFired = true;
+        };
+        vm.PropertyChanged += (_, e) =>
         {
-            _callCounter = 0;
-        }
+            Assert.NotNull(e);
+            if (e.PropertyName == "B") eventBFired = true;
+        };
 
-        [Test]
-        public void FireAdditionalPropertyChangedProperly()
+        vm.A++;
+
+        Assert.True(eventAFired);
+        Assert.True(eventBFired);
+    }
+
+    [Fact]
+    public void FirePropertyChangeNotificationWhenUsingSetWithTwoParameters()
+    {
+        var eventFired = false;
+
+        var vm = new TestObservableObject();
+        vm.PropertyChanged += (_, [UsedImplicitly]e) =>
         {
-            var eventAFired = false;
-            var eventBFired = false;
+            Assert.NotNull(e);
+            Assert.Equal("SetWith2Parameters", e.PropertyName);
+            eventFired = true;
+        };
 
-            var vm = new TestObservableObject();
-            vm.PropertyChanged += (obj, e) =>
-            {
-                Assert.IsNotNull(e);
-                if (e.PropertyName == "A") eventAFired = true;
-            };
-            vm.PropertyChanged += (obj, e) =>
-            {
-                Assert.IsNotNull(e);
-                if (e.PropertyName == "B") eventBFired = true;
-            };
+        Assert.NotEqual(13, vm.PropertyRaisingChangeNotification);
 
-            vm.A++;
+        vm.SetWith2Parameters(13);
 
-            Assert.IsTrue(eventAFired);
-            Assert.IsTrue(eventBFired);
-        }
+        Assert.True(eventFired);
+    }
 
-        [Test]
-        public void FirePropertyChangeNotificationWhenUsingSetWithTwoParameters()
+    [Fact]
+    public void NotCrashFromANullableProperty()
+    {
+        const int value = 13;
+        var oo = new ObservableObjectWithPropertyOfType<int?>();
+
+        Act();
+
+        Assert.Equal(value, oo.Property);
+        return;
+        
+        void Act() => oo.Property = value;
+    }
+
+    [Fact]
+    public void NotCrashFromAStringProperty()
+    {
+        const string value = "Property";
+        var oo = new ObservableObjectWithPropertyOfType<string>();
+        
+        Act();
+
+        Assert.Equal(value, oo.Property);
+        return;
+        
+        void Act() => oo.Property = value;
+    }
+
+    [Fact]
+    public void NotCrashIfAdditionalPropertiesChangedIsNull()
+    {
+        var vm = new TestObservableObject();
+        vm.NullAdditionalProperties();
+    }
+
+    [Fact]
+    public void NotFirePropertyChangedWhenValueSetIsTheSame()
+    {
+        var vm = new TestObservableObject();
+        vm.PropertyChanged += CallCounter;
+
+        Assert.Equal(0, _callCounter);
+
+        var value = vm.PropertyRaisingChangeNotification;
+        vm.PropertyRaisingChangeNotification = value;
+
+        Assert.Equal(0, _callCounter);
+    }
+
+    [Fact]
+    public void ProperlySuspendPropertyChangedEvent()
+    {
+        var vm = new TestObservableObject();
+        vm.PropertyChanged += CallCounter;
+
+        Assert.Equal(0, _callCounter);
+
+        using (vm.SuspendPropertyChangedEvent(CallCounter))
         {
-            var eventFired = false;
-
-            var vm = new TestObservableObject();
-            vm.PropertyChanged += (obj, e) =>
-            {
-                Assert.IsNotNull(e);
-                Assert.AreEqual("SetWith2Parameters", e.PropertyName);
-                eventFired = true;
-            };
-
-            Assert.AreNotEqual(13, vm.PropertyRaisingChangeNotification);
-
-            vm.SetWith2Parameters(13);
-
-            Assert.IsTrue(eventFired);
-        }
-
-        [Test]
-        public void NotCrashFromANullableProperty()
-        {
-            const int value = 13;
-            var oo = new ObservableObjectWithPropertyOfType<int?>();
-            Assert.DoesNotThrow(() => oo.Property = value);
-
-            Assert.AreEqual(value, oo.Property);
-        }
-
-        [Test]
-        public void NotCrashFromAStringProperty()
-        {
-            const string value = "Property";
-            var oo = new ObservableObjectWithPropertyOfType<string>();
-            Assert.DoesNotThrow(() => oo.Property = value);
-
-            Assert.AreEqual(value, oo.Property);
-        }
-
-        [Test]
-        public void NotCrashIfAdditionalPropertiesChangedIsNull()
-        {
-            var vm = new TestObservableObject();
-            Assert.DoesNotThrow(() => vm.NullAdditionalProperties());
-        }
-
-        [Test]
-        public void NotFirePropertyChangedWhenValueSetIsTheSame()
-        {
-            var vm = new TestObservableObject();
-            vm.PropertyChanged += CallCounter;
-
-            Assert.AreEqual(0, _callCounter);
-
-            var value = vm.PropertyRaisingChangeNotification;
-            vm.PropertyRaisingChangeNotification = value;
-
-            Assert.AreEqual(0, _callCounter);
-        }
-
-        [Test]
-        public void ProperlySuspendPropertyChangedEvent()
-        {
-            var vm = new TestObservableObject();
-            vm.PropertyChanged += CallCounter;
-
-            Assert.AreEqual(0, _callCounter);
-
-            using (vm.SuspendPropertyChangedEvent(CallCounter))
-            {
-                vm.PropertyRaisingChangeNotification++;
-                Assert.AreEqual(0, _callCounter);
-            }
-
             vm.PropertyRaisingChangeNotification++;
-            Assert.AreEqual(1, _callCounter);
+            Assert.Equal(0, _callCounter);
         }
 
-        [Test]
-        public void AllowHookingIntoThePropertyChangedProcessing()
-        {
-            var vm = new TestObservableObject();
+        vm.PropertyRaisingChangeNotification++;
+        Assert.Equal(1, _callCounter);
+    }
 
-            Assert.AreEqual(0, vm.OnPropertyChangedCallCount);
+    [Fact]
+    public void AllowHookingIntoThePropertyChangedProcessing()
+    {
+        var vm = new TestObservableObject();
 
-            vm.A = 1;
-            Assert.AreEqual(2, vm.OnPropertyChangedCallCount);
-        }
+        Assert.Equal(0, vm.OnPropertyChangedCallCount);
+
+        vm.A = 1;
+        Assert.Equal(2, vm.OnPropertyChangedCallCount);
     }
 }
